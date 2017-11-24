@@ -1,6 +1,6 @@
 # vue-swagger-ui
 
-> VUE重�重写的Swagger-ui，�使其更方便，更美观
+> VUE重写的Swagger-ui，使其更方便，更美观
 
 ## Build Setup
 
