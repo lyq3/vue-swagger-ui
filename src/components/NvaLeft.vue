@@ -130,6 +130,10 @@ export default {
 </script>
 
 <style scoped>
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 250px;
+    min-height: 400px;
+  }
 .leftBar {
     /* width: 250px; */
     height: 1000px;
