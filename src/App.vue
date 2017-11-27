@@ -27,5 +27,6 @@ body {
   padding: 0px;
   margin: 0px;
   position: fixed;
+  width: 100%
 }
 </style>

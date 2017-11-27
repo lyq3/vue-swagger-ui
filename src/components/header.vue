@@ -1,7 +1,7 @@
 <template>
   <div class ="header">
       <i class="el-icon-d-arrow-right"></i>
-     
+      <i class="el-icon-d-arrow-right"></i>
   </div>
 </template>
 <script>
@@ -11,9 +11,6 @@ export default {
 </script>
 
 <style scoped>
- .header {
-     position:absolute;
-     left: 200px;
- }
+ 
 </style>
 
