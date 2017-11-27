@@ -28,8 +28,5 @@ export default {
 </script>
 
 <style scoped>
-    .el-collapse-item__header::after {
-        backgroundColor: gold; 
-        color: red
-    }
+    
 </style>
