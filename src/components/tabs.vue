@@ -94,6 +94,11 @@ export default {
           this.editableTabs = tabs.filter(tab => tab.name !== targetName);
         }
       }
+    },
+    computed : {
+        changeLeftNav () {
+          return this.$store.state.leftNavStatus
+        }
     }
 }
 </script>
@@ -109,6 +114,7 @@ export default {
     margin-left: 5px;
     font-size: 25px;
     color: #409EFF;
+    cursor :pointer;
 }
 .unify-tabs {
      border-bottom: 1px solid #DFE4ED;

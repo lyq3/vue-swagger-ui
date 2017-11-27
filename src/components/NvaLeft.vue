@@ -1,9 +1,9 @@
 <template>
-<div class="leftBar">
+<div class="leftBar" :style = "{width : changeLeftNavStyle}">
     <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
     <el-radio-button :label="labelValue" ><i class="el-icon-menu" @click="changeLabel"></i></el-radio-button>
     </el-radio-group> -->
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse"  text-color="#fff"
+    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="changeLeftNav"  text-color="#fff"
       active-text-color="#409EFF" background-color="#324157">
     <el-submenu index="1">
         <template slot="title">
@@ -41,7 +41,8 @@ export default {
     data() {
       return {
         isCollapse: false,
-        labelValue:false
+        labelValue:false,
+        changeLeftNavStyle : this.$store.state.leftNavStatus ? null : '250px'
       };
     },
     methods: {
@@ -54,18 +55,23 @@ export default {
       changeLabel(){
           this.labelValue = !this.labelValue;
       }
+    },
+    computed : {
+        changeLeftNav () {
+          return this.$store.state.leftNavStatus
+        }
     }
   }
 </script>
 
 <style scoped>
 .leftBar {
-    width: 250px;
+    /* width: 250px; */
     height: 1000px;
     position:fixed;
     overflow:auto;
     margin: 0;
-    width: inherit;
+    /* width: inherit; */
     background-color:#324157;
   }
   .el-menu-vertical-demo {

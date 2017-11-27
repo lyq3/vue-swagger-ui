@@ -3,7 +3,7 @@
     <v-header></v-header>
   </el-header> -->
   <el-container>
-    <el-aside width="200px">
+    <el-aside>
       <v-NvaLeft></v-NvaLeft>
     </el-aside>
     <el-main>
