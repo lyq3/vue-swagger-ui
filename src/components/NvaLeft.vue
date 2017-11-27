@@ -91,6 +91,7 @@
 
 <script>
 export default {
+    name : 'NvaLeft',
     data() {
       return {
         isCollapse: false,
@@ -112,14 +113,15 @@ export default {
 </script>
 
 <style scoped>
-.el-menu-vertical-demo:not(.el-menu--collapse) {
+.leftBar {
     width: 250px;
-    min-height: 1400px;
+    height: 1000px;
     position:fixed;
     overflow:auto;
     padding: 0;
     margin: 0;
     width: inherit;
+    background-color:#324157;
   }
 
 </style>
