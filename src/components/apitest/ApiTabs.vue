@@ -1,5 +1,5 @@
 <template>
-  <el-tabs :tab-position="tabPosition" style="height: 90%;">
+  <el-tabs :tab-position="tabPosition" style="height: 95%;">
     <el-tab-pane label="接口说明">
       <api-details></api-details>
     </el-tab-pane>
