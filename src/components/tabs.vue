@@ -2,12 +2,12 @@
 <div class="unify-tabs">
     <el-row>
         <el-col :span="1">
-            <div class="contract-btn">
+            <div class="contract-btn" @click="changeLeftNav">
                 <!-- <b>
                     <i class="iconfont icon-all"></i></b>
                 <b> -->
              <!-- <i class="iconfont icon-all"></i></b> -->
-             <i class="el-icon-d-arrow-left" style="font-w"></i>
+             <i :class="iconName"></i>
              <!-- <i class="iconfont">&#xe699;</i> -->
             </div>
         </el-col>
@@ -62,7 +62,8 @@ export default {
           { name: '标签二', type: 'success' },
           { name: '标签三', type: 'info' },
           { name: '标签四', type: 'warning' }
-        ]
+        ],
+        iconName : 'el-icon-d-arrow-left'
       }
     },
     methods: {
@@ -93,19 +94,21 @@ export default {
           this.editableTabsValue = activeName;
           this.editableTabs = tabs.filter(tab => tab.name !== targetName);
         }
-      }
+      },
+      changeLeftNav () {
+          this.iconName = this.$store.state.leftNavStatus ? 'el-icon-d-arrow-left':'el-icon-d-arrow-right'
+           this.$store.commit('changeLeftNav')
+        }
     },
     computed : {
-        changeLeftNav () {
-          return this.$store.state.leftNavStatus
-        }
+        
     }
 }
 </script>
 
 <style scoped>
 .el-tabs {
-    width: 2000px
+    /* width: 2000px */
 }
 .contract-btn {
     border-bottom: 1px solid #DFE4ED;
