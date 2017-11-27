@@ -13,7 +13,7 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/abc',
+      path: '/index',
       name: 'Layout',
       component: Layout
     }
