@@ -23,8 +23,8 @@
 
 <script>
 import NvaLeft from "./NvaLeft"
-import Header from "./header"
-import Tabs from "./tabs"
+import Header from "./Header"
+import Tabs from "./Tabs"
 
 export default {
     data : function(){
