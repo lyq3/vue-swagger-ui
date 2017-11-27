@@ -3,7 +3,12 @@
     <el-row>
         <el-col :span="1">
             <div class="contract-btn">
-             <i class="iconfont icon-category"></i>
+                <!-- <b>
+                    <i class="iconfont icon-all"></i></b>
+                <b> -->
+             <!-- <i class="iconfont icon-all"></i></b> -->
+             <i class="el-icon-d-arrow-left" style="font-w"></i>
+             <!-- <i class="iconfont">&#xe699;</i> -->
             </div>
         </el-col>
         <el-col :span="6">
@@ -102,7 +107,8 @@ export default {
     height: 41px;
     line-height: 41px;
     margin-left: 5px;
-    font-weight: 30px;
+    font-size: 25px;
+    color: #409EFF;
 }
 .unify-tabs {
      border-bottom: 1px solid #DFE4ED;
