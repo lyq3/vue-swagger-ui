@@ -116,7 +116,7 @@ export default {
     width: 250px;
     min-height: 1400px;
     position:fixed;
-    overflow:auto;
+    overflow:auto v;
     padding: 0;
     margin: 0;
     width: inherit;
