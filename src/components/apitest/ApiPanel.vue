@@ -3,7 +3,7 @@
   <el-collapse-item name="1">
       <template slot="title" >
           <div style=" backgroundColor: gold; ">
-                    请求参数
+                    请求头
                 <i class="header-icon el-icon-info"></i>
          </div>
     </template>
