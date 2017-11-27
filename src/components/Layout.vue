@@ -8,6 +8,7 @@
     </el-aside>
     <el-main>
       <v-tabs></v-tabs>
+      <api-tabs></api-tabs>
     </el-main>
     </el-container>
     <!-- <el-row>
@@ -25,6 +26,7 @@
 import NvaLeft from "./NvaLeft"
 import Header from "./Header"
 import Tabs from "./Tabs"
+import ApiTabs from "./apitest/ApiTabs"
 
 export default {
     data : function(){
@@ -35,7 +37,8 @@ export default {
     components : {
         'v-NvaLeft' : NvaLeft,
         'v-header' : Header,
-        'v-tabs' : Tabs
+        'v-tabs' : Tabs,
+        ApiTabs,
     },
     computed : {
         changeLeftNav () {

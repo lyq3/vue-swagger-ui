@@ -14,9 +14,9 @@
         <el-col :span="6">
             <el-breadcrumb separator="/" class = "unify-tabs">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-                <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-                <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-                <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+                <el-breadcrumb-item>用户中心</el-breadcrumb-item>
+                <el-breadcrumb-item>用户列表接口</el-breadcrumb-item>
+                <el-breadcrumb-item>查询</el-breadcrumb-item>
             </el-breadcrumb>
         </el-col>
         <el-col :span="17">
