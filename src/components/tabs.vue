@@ -3,6 +3,7 @@
     <el-row>
         <el-col :span="1">
             <div class="contract-btn" @click="changeLeftNav">
+              
                 <!-- <b>
                     <i class="iconfont icon-all"></i></b>
                 <b> -->
