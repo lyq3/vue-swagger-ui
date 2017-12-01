@@ -8,10 +8,11 @@ import ElementUI from 'element-ui'
 import store from './store/store'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/font-icon/iconfont.css'
+import axios from 'axios'
 
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
 Vue.use(ElementUI)
-// Vue.use(Vuex)
 
 /* eslint-disable no-new */
 new Vue({
