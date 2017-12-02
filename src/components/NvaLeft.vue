@@ -58,7 +58,8 @@ export default {
           return this.$store.state.leftNavStatus
         },
         getAPI(){
-            return  this.$store.getters.getTags;
+            console.log(this.$store.getters.getMenuTreeObj)
+            return  this.$store.getters.getMenuTreeObj;
         }
     }
   }
