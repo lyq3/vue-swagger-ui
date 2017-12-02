@@ -10,9 +10,13 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/font-icon/iconfont.css'
 import axios from 'axios'
 
+axios.defaults.baseURL = "taskManage";
+axios.defaults.headers.get['Content-Type']='application/json;charset=utf-8';
+axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded;charset=utf-8';
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+
 
 /* eslint-disable no-new */
 new Vue({
@@ -20,5 +24,8 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  created(){//初始化请求后台获取API数据
+    this.$store.commit('initJSONData')
+    }
 })
