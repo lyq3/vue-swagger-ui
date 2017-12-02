@@ -1,14 +1,18 @@
 <template>
 <div class="leftBar" :style = "{width : changeLeftNavStyle}">
-    <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="changeLeftNav"  text-color="#fff"
+    <el-menu default-active="-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="changeLeftNav"  text-color="#fff"
       active-text-color="#409EFF" background-color="#324157" >
+      <el-menu-item index="-1">
+        <i class="el-icon-menu"></i>
+        <span slot="title">项目简介</span>
+      </el-menu-item>
     <el-submenu :index="index" v-for="(item, index) in getAPI">
         <template slot="title">
-        <i class="el-icon-location"></i>
+        <el-badge :value="item.paths.length" class="item" :max='99'></el-badge>
         <span slot="title">{{item.name}}</span>
         </template>
         <span v-for="(item2, index2) in item.paths">
-        <el-menu-item :index="index2 +''+ index">{{item2.summary}}</el-menu-item>
+        <el-menu-item :index="index +'-'+ index2">{{item2.summary}}</el-menu-item>
         </span>
         <!-- </el-menu-item-group>
         <el-submenu index="1-4">
@@ -16,15 +20,6 @@
         <el-menu-item index="1-4-1">选项1</el-menu-item>
         </el-submenu> -->
     </el-submenu>
-    
-    <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-    </el-menu-item>
-    <el-menu-item index="3">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航三</span>
-    </el-menu-item>
     </el-menu>
 </div>
 </template>
