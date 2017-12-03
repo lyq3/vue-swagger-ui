@@ -65,7 +65,7 @@ export default {
         for(let i = 0 ; i<tagArry.length ; i++){
           if(name == tagArry[i].name){
             path = tagArry[i].path;
-            tagArry[i].type = 'success';
+            tagArry[i].type = '';
           }else {
             tagArry[i].type = 'info';
           }

@@ -48,7 +48,7 @@ export default {
         //把其他标签颜色全改为灰色,当前标签绿色
         for(let i = 0 ; i<tagArry.length ; i++){
           if(summary == tagArry[i].name){
-            tagArry[i].type = 'success';
+            tagArry[i].type = '';
             flg = false;
           }else {
             tagArry[i].type = 'info';
@@ -56,7 +56,7 @@ export default {
         }
         if(flg){
           //添加标签
-        this.$store.commit('addTabs',{ name: summary, type: 'success' ,path:'/api/'+index+'/'+index2});
+        this.$store.commit('addTabs',{ name: summary, type: '' ,path:'/api/'+index+'/'+index2});
         }
         //跳转路由
         this.$router.push('/api/'+index+'/'+index2)
@@ -66,7 +66,7 @@ export default {
         for(let i = 0 ; i<this.$store.state.tagsURL.length ; i++){
           _this.$store.state.tagsURL[i].type='info'
         }
-        this.$store.state.tagsURL[0].type='success'
+        this.$store.state.tagsURL[0].type=''
         this.$router.push('/');
       }
     },
