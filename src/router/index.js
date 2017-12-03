@@ -14,7 +14,7 @@ export default new Router({
       component: Layout,
       children: [
         //子路由
-        { path: 'api/:id', component: ApiTabs },
+        { path: 'api/:start/:end', component: ApiTabs },
 
         {path: '', component: Introduction}
       ]

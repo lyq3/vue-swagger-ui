@@ -2,9 +2,9 @@
 <div class="leftBar" :style = "{width : changeLeftNavStyle}">
     <el-menu default-active="-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="changeLeftNav"  text-color="#fff"
       active-text-color="#409EFF" background-color="#324157">
-      <el-menu-item index="-1">
+      <el-menu-item index="-1" @click="toIndex">
         <i class="el-icon-menu"></i>
-        <span slot="title">项目简介</span>
+        <span slot="title" >项目简介</span>
       </el-menu-item>
     <el-submenu :index="index" v-for="(item, index) in getAPI">
         <template slot="title">
@@ -56,10 +56,18 @@ export default {
         }
         if(flg){
           //添加标签
-        this.$store.commit('addTabs',{ name: summary, type: 'success' ,path:'/api/'+index+'-'+index2});
+        this.$store.commit('addTabs',{ name: summary, type: 'success' ,path:'/api/'+index+'/'+index2});
         }
         //跳转路由
-        this.$router.push('/api/'+index+'-'+index2)
+        this.$router.push('/api/'+index+'/'+index2)
+      },
+      toIndex(){
+        let _this = this;
+        for(let i = 0 ; i<this.$store.state.tagsURL.length ; i++){
+          _this.$store.state.tagsURL[i].type='info'
+        }
+        this.$store.state.tagsURL[0].type='success'
+        this.$router.push('/');
       }
     },
     computed : {
