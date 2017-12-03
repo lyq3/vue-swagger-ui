@@ -41,7 +41,7 @@
             {{tag.name}}
             </el-tag>
             </span> -->
-            <el-button type="success" round>头像</el-button>
+            <el-button type="success" round>登录/注册</el-button>
         </el-col>
     </el-row>
     <el-row>

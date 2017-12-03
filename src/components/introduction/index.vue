@@ -1,19 +1,19 @@
 <template>
 <div class = 'indexClass'>
   <div class="btn-class">
-    <el-badge :value="200" :max="99" class="item">
+    <el-badge :value="this.$store.getters.statisticsHTTP.get ? this.$store.getters.statisticsHTTP.get :'0'" class="item">
       <el-button type="success">GET</el-button>
     </el-badge>
-    <el-badge :value="200" :max="99" class="item">
+    <el-badge :value="this.$store.getters.statisticsHTTP.post ? this.$store.getters.statisticsHTTP.post :'0'" class="item">
     <el-button type="primary">POST</el-button>
     </el-badge>
-    <el-badge :value="200" :max="99" class="item">
+    <el-badge :value="this.$store.getters.statisticsHTTP.del ? this.$store.getters.statisticsHTTP.del :'0'"  class="item">
     <el-button type="danger">DELETE</el-button>
     </el-badge>
-    <el-badge :value="200" :max="99" class="item">
-    <el-button type="warning">PUSH</el-button>
+    <el-badge :value="this.$store.getters.statisticsHTTP.put ? this.$store.getters.statisticsHTTP.put :'0'"  class="item">
+    <el-button type="warning">PUT</el-button>
     </el-badge>
-    <el-badge :value="200" :max="99" class="item">
+    <el-badge :value="this.$store.getters.statisticsHTTP.others ? this.$store.getters.statisticsHTTP.others :'0'"  class="item">
     <el-button type="info">其他</el-button>
     </el-badge>
   </div>
