@@ -33,7 +33,7 @@
             <el-tag 
             v-for="tag in tags"
             :key="tag.name"
-            closable
+            :closable = "isIndex(tag.name)"
             :type="tag.type"
             @close="handleClose(tag)"
             >
@@ -72,6 +72,13 @@ export default {
           }
         }
         this.$router.push(path)
+      },
+      //判断是否是首页，首页不可关闭
+      isIndex(name){
+        if(name == '首页'){
+          return false;
+        }
+        return true;
       },
       // handleTabsEdit(targetName, action) {
       //   if (action === 'add') {

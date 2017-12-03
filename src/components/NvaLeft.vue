@@ -44,20 +44,22 @@ export default {
       },
       goApi(index,index2,summary){
         let tagArry = this.$store.state.tagsURL;
-        //把其他标签颜色全改为灰色
+        let flg = true;
+        //把其他标签颜色全改为灰色,当前标签绿色
         for(let i = 0 ; i<tagArry.length ; i++){
           if(summary == tagArry[i].name){
-          this.$message({
-            showClose: true,
-            message: '该标签已打开，无须重复开启',
-            type: 'error'
-          })
-            return false;
+            tagArry[i].type = 'success';
+            flg = false;
+          }else {
+            tagArry[i].type = 'info';
           }
-          tagArry[i].type = 'info';
         }
-        this.$store.commit('addTabs',{ name: summary, type: 'success' ,path:'/api/'+index+'-'+index2})
-
+        if(flg){
+          //添加标签
+        this.$store.commit('addTabs',{ name: summary, type: 'success' ,path:'/api/'+index+'-'+index2});
+        }
+        //跳转路由
+        this.$router.push('/api/'+index+'-'+index2)
       }
     },
     computed : {

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Introduction from '@/components/introduction/index'
 import Layout from '@/components/Layout'
 import ApiTabs from "@/components/apitest/ApiTabs"
 
@@ -16,7 +16,7 @@ export default new Router({
         //子路由
         { path: 'api/:id', component: ApiTabs },
 
-        // ...其他子路由
+        {path: '', component: Introduction}
       ]
     }
   ]

@@ -8,7 +8,7 @@ export default new Vuex.Store({
         leftNavStatus: false,
         JSONData : {},
         tagsURL : [
-          { name: '首页', type: 'success',path: '/api/1' }
+          { name: '首页', type: 'success',path: '/' }
         ]
       },
     mutations: {
