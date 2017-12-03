@@ -46,6 +46,10 @@ export default {
         let tagArry = this.$store.state.tagsURL;
         //把其他标签颜色全改为灰色
         for(let i = 0 ; i<tagArry.length ; i++){
+          if(summary == tagArry[i].name){
+            alert("该标签已打开，无须重复开启")
+            return false;
+          }
           tagArry[i].type = 'info';
         }
         this.$store.commit('addTabs',{ name: summary, type: 'success' })

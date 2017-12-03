@@ -35,8 +35,11 @@
             :key="tag.name"
             closable
             :type="tag.type"
-            @close="handleClose(tag)">
+            @close="handleClose(tag)"
+            >
+            <span @click="clickTab(tag.name)">
             {{tag.name}}
+            </span>
             </el-tag>
         </el-col>
     </el-row>
@@ -55,6 +58,17 @@ export default {
     methods: {
       handleClose(tag) {
         this.tags.splice(this.tags.indexOf(tag), 1);
+      },
+      clickTab(name){
+          let tagArry = this.$store.state.tagsURL;
+        //把当前点击的标签改为绿色其他标签颜色全改为灰色
+        for(let i = 0 ; i<tagArry.length ; i++){
+          if(name == tagArry[i].name){
+            tagArry[i].type = 'success';
+          }else {
+            tagArry[i].type = 'info';
+          }
+        }
       },
       // handleTabsEdit(targetName, action) {
       //   if (action === 'add') {
@@ -111,6 +125,11 @@ export default {
      border-bottom: 1px solid #DFE4ED;
     height: 41px;
     line-height: 41px;
+}
+.el-tag {
+  margin-right: 5px;
+  z-index: -1;
+  cursor:pointer
 }
 </style>
 
