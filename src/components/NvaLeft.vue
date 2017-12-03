@@ -1,7 +1,7 @@
 <template>
 <div class="leftBar" :style = "{width : changeLeftNavStyle}">
     <el-menu default-active="-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="changeLeftNav"  text-color="#fff"
-      active-text-color="#409EFF" background-color="#324157" >
+      active-text-color="#409EFF" background-color="#324157">
       <el-menu-item index="-1">
         <i class="el-icon-menu"></i>
         <span slot="title">项目简介</span>
@@ -9,9 +9,9 @@
     <el-submenu :index="index" v-for="(item, index) in getAPI">
         <template slot="title">
         <el-badge :value="item.paths.length" class="item" :max='99'></el-badge>
-        <span slot="title">{{item.name}}</span>
+        <span slot="title" >{{item.name}}</span>
         </template>
-        <span v-for="(item2, index2) in item.paths">
+        <span v-for="(item2, index2) in item.paths" @click="goApi(index,index2)">
         <el-menu-item :index="index +'-'+ index2">{{item2.summary}}</el-menu-item>
         </span>
         <!-- </el-menu-item-group>
@@ -41,6 +41,10 @@ export default {
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
+      },
+      goApi(index,index2){
+        alert(index+'-'+index2)
+
       }
     },
     computed : {
@@ -73,6 +77,7 @@ export default {
   .el-menu-vertical-demo {
       border: 0
   }
+  a {text-decoration:none} 
 
 </style>
 

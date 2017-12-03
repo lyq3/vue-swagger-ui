@@ -4,11 +4,16 @@
   </el-header> -->
   <el-container>
     <el-aside width = "asideWidth">
+      <!--坐标导航栏-->
       <v-NvaLeft></v-NvaLeft>
     </el-aside>
     <el-main>
+      <!--顶部Tabs-->
       <v-tabs></v-tabs>
-      <api-tabs></api-tabs>
+      <!--接口详情页面路由-->
+       <keep-alive>
+        <router-view/>
+      </keep-alive>
     </el-main>
     </el-container>
     <!-- <el-row>
