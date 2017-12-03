@@ -6,7 +6,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         leftNavStatus: false,
-        JSONData : {}
+        JSONData : {},
+        tagsURL : [
+          { name: '标签一', type: '' },
+          { name: '标签二', type: 'success' },
+          { name: '标签三', type: 'info' },
+          { name: '标签四', type: 'warning' }
+        ]
       },
     mutations: {
         changeLeftNav (state) {
@@ -20,6 +26,9 @@ export default new Vuex.Store({
             .catch(function(err){
                 alert('/v2/api-docs接口无法获取数据')
             });
+        },
+        addTabs(state,newTab){//添加标签
+          state.tagsURL.push(newTab)
         }
       },
       getters : {

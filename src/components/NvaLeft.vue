@@ -11,7 +11,7 @@
         <el-badge :value="item.paths.length" class="item" :max='99'></el-badge>
         <span slot="title" >{{item.name}}</span>
         </template>
-        <span v-for="(item2, index2) in item.paths" @click="goApi(index,index2)">
+        <span v-for="(item2, index2) in item.paths" @click="goApi(index,index2,item2.summary)">
         <el-menu-item :index="index +'-'+ index2">{{item2.summary}}</el-menu-item>
         </span>
         <!-- </el-menu-item-group>
@@ -42,8 +42,13 @@ export default {
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       },
-      goApi(index,index2){
-        alert(index+'-'+index2)
+      goApi(index,index2,summary){
+        let tagArry = this.$store.state.tagsURL;
+        //把其他标签颜色全改为灰色
+        for(let i = 0 ; i<tagArry.length ; i++){
+          tagArry[i].type = 'info';
+        }
+        this.$store.commit('addTabs',{ name: summary, type: 'success' })
 
       }
     },
