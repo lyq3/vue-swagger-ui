@@ -12,15 +12,16 @@
              <!-- <i class="iconfont">&#xe699;</i> -->
             </div>
         </el-col>
-        <el-col :span="6">
-            <el-breadcrumb separator="/" class = "unify-tabs">
+        <!-- <el-col :span="4" class="projectName"> -->
+            <!-- <el-breadcrumb separator="/" class = "unify-tabs">
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item>用户中心</el-breadcrumb-item>
                 <el-breadcrumb-item>用户列表接口</el-breadcrumb-item>
                 <el-breadcrumb-item>查询</el-breadcrumb-item>
-            </el-breadcrumb>
-        </el-col>
-        <el-col :span="17">
+            </el-breadcrumb> -->
+            <!-- <b>信息中心展晒平台API接口文档</b> -->
+        <!-- </el-col> -->
+        <el-col :span="23" class = "topBar">
             <!-- <el-tabs v-model="editableTabsValue" type="card" editable @edit="handleTabsEdit">
             <el-tab-pane
                 :key="item.name"
@@ -30,7 +31,22 @@
                 {{item.content}}
             </el-tab-pane>
             </el-tabs> -->
-            <span v-for="tag in tags" @click="clickTab(tag.name)">
+            <!-- <span v-for="tag in tags" @click="clickTab(tag.name)">
+            <el-tag 
+            :key="tag.name"
+            :closable = "isIndex(tag.name)"
+            :type="tag.type"
+            @close="handleClose(tag)"
+            >
+            {{tag.name}}
+            </el-tag>
+            </span> -->
+            <el-button type="success" round>头像</el-button>
+        </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="24" class="tabsLine">
+      <span v-for="tag in tags" @click="clickTab(tag.name)">
             <el-tag 
             :key="tag.name"
             :closable = "isIndex(tag.name)"
@@ -40,7 +56,7 @@
             {{tag.name}}
             </el-tag>
             </span>
-        </el-col>
+      </el-col>
     </el-row>
     
     </div>
@@ -111,6 +127,19 @@ export default {
   margin-right: 5px;
   z-index: -1;
   cursor:pointer
+}
+.projectName {
+  /* background-color: #42B983; */
+  color : #42B983
+}
+.tabsLine {
+  /* border-bottom: 1px solid #DFE4ED; */
+  line-height: 40px;
+  box-shadow: 2px 2px 5px #888888;
+}
+.topBar{
+  text-align: right;
+  padding-right: 20px
 }
 </style>
 
