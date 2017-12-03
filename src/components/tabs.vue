@@ -30,17 +30,16 @@
                 {{item.content}}
             </el-tab-pane>
             </el-tabs> -->
+            <span v-for="tag in tags" @click="clickTab(tag.name)">
             <el-tag 
-            v-for="tag in tags"
             :key="tag.name"
             :closable = "isIndex(tag.name)"
             :type="tag.type"
             @close="handleClose(tag)"
             >
-            <span @click="clickTab(tag.name)">
             {{tag.name}}
-            </span>
             </el-tag>
+            </span>
         </el-col>
     </el-row>
     
