@@ -62,13 +62,16 @@ export default {
       clickTab(name){
           let tagArry = this.$store.state.tagsURL;
         //把当前点击的标签改为绿色其他标签颜色全改为灰色
+        let path = '';
         for(let i = 0 ; i<tagArry.length ; i++){
           if(name == tagArry[i].name){
+            path = tagArry[i].path;
             tagArry[i].type = 'success';
           }else {
             tagArry[i].type = 'info';
           }
         }
+        this.$router.push(path)
       },
       // handleTabsEdit(targetName, action) {
       //   if (action === 'add') {
