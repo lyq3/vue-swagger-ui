@@ -20,23 +20,27 @@
     <table class="table-class" border='1'>
       <tr>
         <td style="width:200px;text-align: center">简介</td>
-        <td></td>
+        <td v-html="this.$store.getters.getInfo.description"></td>
       </tr>
       <tr>
         <td style="text-align: center">作者</td>
-        <td></td>
+        <td >{{this.$store.getters.getInfo.contact.name}}</td>
       </tr>
       <tr>
         <td style="text-align: center">版本</td>
-        <td></td>
+        <td>{{this.$store.getters.getInfo.version}}</td>
       </tr>
       <tr>
         <td style="text-align: center">Host</td>
-        <td></td>
+        <td>{{this.$store.getters.getHost}}</td>
+      </tr>
+      <tr>
+        <td style="text-align: center">联系方式</td>
+        <td>{{this.$store.getters.getInfo.contact.email}}</td>
       </tr>
       <tr>
         <td style="text-align: center">服务提供商URL</td>
-        <td></td>
+        <td>{{this.$store.getters.getInfo.contact.url}}</td>
       </tr>
     </table>
   </div>
@@ -46,19 +50,7 @@
 export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎<br/>sdsd'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎'
-        }]
+       
       }
     }
 }
@@ -79,8 +71,8 @@ export default {
   border-collapse: collapse;
 }
 .table-class td {
-  height: 30px;
-  padding: 5px;
+  height: 40px;
+  padding: 10px;
 }
 .btn-class {
   margin-top: 10px
