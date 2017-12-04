@@ -9,7 +9,8 @@ export default new Vuex.Store({
     JSONData: {},
     tagsURL: [
       { name: '首页', type: '', path: '/' }
-    ]
+    ],
+    windowHeight:window.innerHeight
   },
   mutations: {
     changeLeftNav(state) {
@@ -26,6 +27,10 @@ export default new Vuex.Store({
     },
     addTabs(state, newTab) {//添加标签
       state.tagsURL.push(newTab)
+    },
+    chengeHeight(state){
+        state.windowHeight = window.innerHeight;
+        console.log(state.windowHeight)
     }
   },
   getters: {

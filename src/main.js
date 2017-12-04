@@ -26,6 +26,10 @@ new Vue({
   template: '<App/>',
   components: { App },
   created(){//初始化请求后台获取API数据
-    this.$store.commit('initJSONData')
+    this.$store.commit('initJSONData');
+    let _this = this;
+    window.onresize = function(){
+      _this.$store.commit('chengeHeight');
+    }
     }
 })

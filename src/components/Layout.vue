@@ -1,7 +1,4 @@
 <template>
-  <!-- <el-header>
-    <v-header></v-header>
-  </el-header> -->
   <el-container>
     <el-aside width = "asideWidth">
       <!--坐标导航栏-->
@@ -9,29 +6,23 @@
     </el-aside>
     <el-main>
       <!--顶部Tabs-->
+       <el-row>
+      <el-col :span="24">
       <v-tabs></v-tabs>
+      </el-col>
+       </el-row>
       <!--接口详情页面路由-->
        <keep-alive>
         <router-view/>
       </keep-alive>
     </el-main>
     </el-container>
-    <!-- <el-row>
-      <el-col :span="2">
-          <v-NvaLeft></v-NvaLeft>
-      </el-col>
-      <el-col :span="22">
-          <v-tabs></v-tabs>
-      </el-col>
-    </el-row> -->
   
 </template>
 
 <script>
 import NvaLeft from "./NvaLeft"
-import Header from "./Header"
 import Tabs from "./Tabs"
-import ApiTabs from "./apitest/ApiTabs"
 
 export default {
     data : function(){
@@ -41,14 +32,9 @@ export default {
     },
     components : {
         'v-NvaLeft' : NvaLeft,
-        'v-header' : Header,
         'v-tabs' : Tabs,
-        ApiTabs,
     },
     computed : {
-        changeLeftNav () {
-          // return this.$store.state.leftNavStatus
-        }
     }
 }
 </script>

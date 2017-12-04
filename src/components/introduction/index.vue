@@ -1,5 +1,5 @@
 <template>
-<div class = 'indexClass'>
+<div >
   <div class="btn-class">
     <el-badge :value="this.$store.getters.statisticsHTTP.get ? this.$store.getters.statisticsHTTP.get :'0'" class="item">
       <el-button type="success">GET</el-button>
@@ -57,9 +57,7 @@ export default {
 </script>
 
 <style scoped>
-.indexClass {
-  padding-top: 50px
-}
+
 .progress-bar{
   width: 80%;
   margin-bottom: 5px

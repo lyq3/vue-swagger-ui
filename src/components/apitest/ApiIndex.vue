@@ -1,10 +1,17 @@
 <template>
-  <div>
-    <div class="btnBar-class">
-        <el-button type="primary">接口介绍</el-button>
-        <el-button type="success">接口测试</el-button>
-    </div>
-        <api-test></api-test>
+  <div class = "apiindex-class">
+    
+    <el-row>
+      <el-col :span="24" >
+        <el-tabs :tab-position="tabPosition" v-model="activeName" @tab-click="handleClick" :style="{height: this.$store.state.windowHeight+'px'}">
+          <el-tab-pane label="接口详情" name="first">用户管理</el-tab-pane>
+          <el-tab-pane label="接口测试" name="second">
+            <api-test></api-test>
+          </el-tab-pane>
+        </el-tabs>
+      </el-col>
+    </el-row>
+        
   </div>
 </template>
 <script>
@@ -12,7 +19,8 @@ import { ApiTest, ApiDetails } from "@/components/apitest";
 export default {
   data() {
     return {
-      tabPosition: 'top'
+      activeName: 'second',
+      tabPosition : 'left'
     };
   },
   components: {
