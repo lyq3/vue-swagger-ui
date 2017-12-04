@@ -1,5 +1,5 @@
 <template>
-<div class="leftBar" :style = "{width : changeLeftNavStyle}">
+<div class="leftBar" :style = "{width : changeLeftNavStyle,height: this.$store.state.windowHeight+'px'}" >
     <el-menu default-active="-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="changeLeftNav"  text-color="#fff"
       active-text-color="#409EFF" background-color="#324157">
       <el-menu-item index="-1" @click="toIndex">
@@ -87,15 +87,10 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 250px;
     min-height: 400px;
-    margin-bottom: 350px
   }
 .leftBar {
-    /* width: 250px; */
-    height: 1000px;
-    /* position:fixed; */
     overflow:auto;
     margin: 0;
-    /* width: inherit; */
     background-color:#324157;
   }
   .el-menu-vertical-demo {
