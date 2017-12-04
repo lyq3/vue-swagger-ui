@@ -136,6 +136,7 @@ export default {
   /* border-bottom: 1px solid #DFE4ED; */
   line-height: 40px;
   box-shadow: 2px 2px 5px #888888;
+  margin-bottom: 15px;
 }
 .topBar{
   text-align: right;
