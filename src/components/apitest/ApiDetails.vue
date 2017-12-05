@@ -17,15 +17,15 @@
                 label="Key"
                 width="300">
                     <template slot-scope="scope">
-                        <b style="color:#878D99"> {{ scope.row.key }}</b>
+                        <b style="color:#878D99" v-html=" scope.row.key"> </b>
                     </template>
                 </el-table-column>
                 <el-table-column
                 prop="value"
                 label="Value">
-                <!-- <template slot-scope="scope">
-                    <b style="color:#878D99"> {{ scope.row.key }}</b>
-                </template> -->
+                <template slot-scope="scope">
+                    <b  v-html=" scope.row.value"> </b>
+                </template>
                 </el-table-column>
             </el-table>
         </el-collapse-item>
@@ -68,16 +68,16 @@ export default {
         activeNames: ['1','2'],
         tableData: [{
           key: '接口地址',
-          value: '王小虎'
+          value: '<span style="color:red">/mine/insertUser</span>'
         }, {
-           key: '接口名城',
-          value: '王小虎'
+           key: '接口名称',
+          value: '新增人员'
         }, {
           key: '接口说明',
-          value: '王小虎'
+          value: '有效标识Y-有效N-无效'
         }, {
           key: '请求方式',
-          value: '王小虎'
+          value: '<span style="color:#409EFF">POST</span>'
         }]
       };
     }
