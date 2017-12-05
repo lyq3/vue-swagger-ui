@@ -78,7 +78,16 @@ export default {
         }, {
           key: '请求方式',
           value: '<span style="color:#409EFF">POST</span>'
-        }]
+        },
+        {
+          key: 'consumes',
+          value: '<span style="color:#409EFF">application/json</span>'
+        },
+        {
+          key: 'produces',
+          value: '<span style="color:#409EFF">*/*</span>'
+        }
+        ]
       };
     }
 }
