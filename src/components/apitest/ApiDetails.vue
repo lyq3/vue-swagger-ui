@@ -68,7 +68,7 @@ export default {
         activeNames: ['1','2'],
         tableData: [{
           key: '接口地址',
-          value: '<span style="color:red">/mine/insertUser</span>'
+          value: '<span style="color:red">'+ this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].path+'</span>'
         }, {
            key: '接口名称',
           value: '新增人员'
