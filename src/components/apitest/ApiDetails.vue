@@ -12,32 +12,32 @@
             <div>
                 <table class = "table-class">
                     <tr>
-                        <td >
+                        <td style="width:200px">
                             URL
                         </td>
-                        <td>
+                        <td style="color:red">
                             {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].path}}
                         </td>
                     </tr>
                     <tr>
-                        <td>有效</td>
-                        <td>12313</td>
+                        <td >请求方式</td>
+                        <td style="color:#409EFF"> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].sendWay.toUpperCase()}}</td>
                     </tr>
                     <tr>
-                        <td>123123</td>
-                        <td>123123</td>
+                        <td>接口名称</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].summary}}</td>
                     </tr>
                     <tr>
-                        <td>123123</td>
-                        <td>123123</td>
+                        <td>接口说明</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].description}}</td>
                     </tr>
                     <tr>
-                        <td>123123</td>
-                        <td>123123</td>
+                        <td>consumes</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].consumes}}</td>
                     </tr>
                     <tr>
-                        <td>123123</td>
-                        <td>123123</td>
+                        <td>produces</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].produces}}</td>
                     </tr>
                 </table>
             </div>
@@ -120,7 +120,12 @@ export default {
     .table-class td {
     height: 40px;
     line-height: 40px;
-    padding: 10px;
+    padding:5px 20px;
     border-bottom: 1px solid #E5E5E5;
+    font-weight: bold;
+   
+    }
+    tr :first-child {
+         color: #868B9B;
     }
 </style>
