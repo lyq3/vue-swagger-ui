@@ -3,7 +3,7 @@
     
     <el-row>
       <el-col :span="24" >
-        <el-tabs :tab-position="tabPosition" v-model="activeName" @tab-click="handleClick" :style="{height: this.$store.state.windowHeight+'px'}">
+        <el-tabs :tab-position="tabPosition" v-model="activeName" :style="{height: this.$store.state.windowHeight+'px'}">
           <el-tab-pane label="接口详情" name="first">
             <api-details></api-details>
           </el-tab-pane>

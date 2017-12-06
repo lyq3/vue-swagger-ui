@@ -17,13 +17,25 @@ export default new Vuex.Store({
       state.leftNavStatus = !state.leftNavStatus
     },
     initJSONData(state) {//从后台获取数据
-      Vue.prototype.$http.get('/v2/api-docs')
-        .then(function (response) {
-          state.JSONData = response.data;
-        })
-        .catch(function (err) {
-          alert('/v2/api-docs接口无法获取数据')
-        });
+      // Vue.prototype.$http.get('/v2/api-docs')
+      //   .then(function (response) {
+      //     state.JSONData = response.data;
+      //   })
+      //   .catch(function (err) {
+      //     alert('/v2/api-docs接口无法获取数据')
+      //   });
+      $.ajax({
+        async: false,
+        url:'/taskManage/v2/api-docs',
+        type : 'get',
+        dataType : 'json',
+        error : function(){
+          
+        },
+        success : function(res){
+          state.JSONData = res;
+        }
+      })
     },
     addTabs(state, newTab) {//添加标签
       state.tagsURL.push(newTab)

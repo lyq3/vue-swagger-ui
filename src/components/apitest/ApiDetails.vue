@@ -1,5 +1,6 @@
 <template>
   <div>
+      
       <el-collapse v-model="activeNames" >
         <el-collapse-item name="1" class="collapse-class"> 
             <template slot="title" >
@@ -8,26 +9,39 @@
                         <i class="header-icon el-icon-info"></i>
                 </div>
             </template>
-            <el-table
-                :data="tableData"
-                stripe
-                class="table-class" >
-                <el-table-column
-                prop="key"
-                label="Key"
-                width="300">
-                    <template slot-scope="scope">
-                        <b style="color:#878D99" v-html=" scope.row.key"> </b>
-                    </template>
-                </el-table-column>
-                <el-table-column
-                prop="value"
-                label="Value">
-                <template slot-scope="scope">
-                    <b  v-html=" scope.row.value"> </b>
-                </template>
-                </el-table-column>
-            </el-table>
+            <div>
+                <table class = "table-class">
+                    <tr>
+                        <td >
+                            URL
+                        </td>
+                        <td>
+                            {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].path}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>有效</td>
+                        <td>12313</td>
+                    </tr>
+                    <tr>
+                        <td>123123</td>
+                        <td>123123</td>
+                    </tr>
+                    <tr>
+                        <td>123123</td>
+                        <td>123123</td>
+                    </tr>
+                    <tr>
+                        <td>123123</td>
+                        <td>123123</td>
+                    </tr>
+                    <tr>
+                        <td>123123</td>
+                        <td>123123</td>
+                    </tr>
+                </table>
+            </div>
+           
         </el-collapse-item>
         <el-collapse-item  name="2" class="collapse-class">
             <template slot="title" >
@@ -39,7 +53,7 @@
                      <el-table
                 :data="tableData"
                 stripe
-                class="table-class">
+                >
                 <el-table-column
                 prop="date"
                 label="日期"
@@ -66,29 +80,12 @@ export default {
   data() {
       return {
         activeNames: ['1','2'],
-        tableData: [{
-          key: '接口地址',
-          value: '<span style="color:red">'+ this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].path+'</span>'
-        }, {
-           key: '接口名称',
-          value: '新增人员'
-        }, {
-          key: '接口说明',
-          value: '有效标识Y-有效N-无效'
-        }, {
-          key: '请求方式',
-          value: '<span style="color:#409EFF">POST</span>'
-        },
-        {
-          key: 'consumes',
-          value: '<span style="color:#409EFF">application/json</span>'
-        },
-        {
-          key: 'produces',
-          value: '<span style="color:#409EFF">*/*</span>'
-        }
-        ]
+        routeStart:this.$route.params.start,
+        routeEnd :this.$route.params.end
       };
+    },
+    props : ['start','end'],
+    computed: {
     }
 }
 </script>
@@ -113,8 +110,17 @@ export default {
         margin-bottom: 20px;
         box-shadow: 3px 3px 8px #C4C4C4;
     }
-    .table-class{
-        width: 100%;
-        border-top: 1px solid #E5E5E5;
+    .table-class {
+    width: 100%;
+    border: 0px;
+    border-top: 1px solid #E5E5E5;
+    border-left:0;
+    border-collapse: collapse;
+    }
+    .table-class td {
+    height: 40px;
+    line-height: 40px;
+    padding: 10px;
+    border-bottom: 1px solid #E5E5E5;
     }
 </style>
