@@ -130,7 +130,7 @@ export default {
 <style scoped>
 ::-webkit-scrollbar{width:8px;}
 ::-webkit-scrollbar-track{background-color:#fff;}
-::-webkit-scrollbar-thumb{background-color:#67C23A;}
+::-webkit-scrollbar-thumb{background-color:#00aff0;}
 ::-webkit-scrollbar-thumb:hover {background-color:#00aff0}
 ::-webkit-scrollbar-thumb:active {background-color:#67C23A}
     .outerClass {

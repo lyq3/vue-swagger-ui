@@ -21,7 +21,7 @@ import { ApiTest, ApiDetails } from "@/components/apitest";
 export default {
   data() {
     return {
-      activeName: 'second',
+      activeName: 'first',
       tabPosition : 'left'
     };
   },
