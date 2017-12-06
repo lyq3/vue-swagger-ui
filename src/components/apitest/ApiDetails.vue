@@ -50,25 +50,36 @@
                         <i class="header-icon el-icon-info"></i>
                 </div>
             </template>
-                     <el-table
-                :data="tableData"
-                stripe
-                >
-                <el-table-column
-                prop="date"
-                label="日期"
-                width="180">
-                </el-table-column>
-                <el-table-column
-                prop="name"
-                label="姓名"
-                width="180">
-                </el-table-column>
-                <el-table-column
-                prop="address"
-                label="地址">
-                </el-table-column>
-            </el-table>
+                     <table class = "table-class">
+                    <tr>
+                        <td style="width:200px">
+                            URL
+                        </td>
+                        <td style="color:red">
+                            {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].path}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td >请求方式</td>
+                        <td style="color:#409EFF"> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].sendWay.toUpperCase()}}</td>
+                    </tr>
+                    <tr>
+                        <td>接口名称</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].summary}}</td>
+                    </tr>
+                    <tr>
+                        <td>接口说明</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].description}}</td>
+                    </tr>
+                    <tr>
+                        <td>consumes</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].consumes}}</td>
+                    </tr>
+                    <tr>
+                        <td>produces</td>
+                        <td> {{this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end].produces}}</td>
+                    </tr>
+                </table>
         </el-collapse-item>
         
         </el-collapse>
@@ -79,12 +90,9 @@
 export default {
   data() {
       return {
-        activeNames: ['1','2'],
-        routeStart:this.$route.params.start,
-        routeEnd :this.$route.params.end
+          activeNames:['1','2']
       };
     },
-    props : ['start','end'],
     computed: {
     }
 }
@@ -108,7 +116,7 @@ export default {
     .collapse-class {
         border: 1px solid #D8D8D8;
         margin-bottom: 20px;
-        box-shadow: 3px 3px 8px #C4C4C4;
+        /* box-shadow: 3px 3px 8px #C4C4C4; */
     }
     .table-class {
     width: 100%;
