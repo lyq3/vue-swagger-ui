@@ -58,6 +58,7 @@
                         <td>IN</td>
                         <td>是否必须</td>
                     </tr>
+                    
                     <tr v-for="key in tree.parameters">
                         <td >{{key.name}}</td>
                         <td >{{key.description}}</td>
@@ -68,6 +69,7 @@
                     </tr>
                     
                 </table>
+                 <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
         </el-collapse-item>
          <el-collapse-item  name="2" class="collapse-class">
             <template slot="title" >
@@ -87,7 +89,7 @@
                     </tr>
                     <tr>
                         <td >请求方式</td>
-                        <td style="color:#409EFF"> {{tree.sendWay.toUpperCase()}}</td>
+                        <td > {{tree.sendWay.toUpperCase()}}</td>
                     </tr>
                     <tr>
                         <td>接口名称</td>
