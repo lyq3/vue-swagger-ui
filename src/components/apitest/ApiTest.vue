@@ -92,10 +92,20 @@ export default {
           console.log(this.tree.parameters);
           let _this = this;
           let url = this.tree.path;
+          let tree = this.tree;
           let loading ;
+          let sendParm = {}
+          if(_this.tree.parameters){
+            for(let i= 0 ; i< _this.tree.parameters.length ; i++){
+                if(tree.parameters[i].checked){
+                    sendParm[tree.parameters[i].name] = tree.parameters[i].value;
+                    console.log(sendParm)
+                }
+            }
+          }
           $.ajax({
               url : '/webchat'+url,
-              data : {},
+              data : sendParm,
               type : _this.tree.sendWay.toLowerCase(),
               dataType : 'json',
               beforeSend:function(){
