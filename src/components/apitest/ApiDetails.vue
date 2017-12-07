@@ -46,7 +46,7 @@
             <template slot="title" >
                 <div class="panel-title">
                             请求参数
-                        <i class="header-icon el-icon-info"></i>
+                        <i class="header-icon el-icon-upload"></i>
                 </div>
             </template>
             <!--接口参数列表-->
@@ -75,7 +75,7 @@
             <template slot="title" >
                 <div class="panel-title">
                             响应模型
-                        <i class="header-icon el-icon-info"></i>
+                        <i class="header-icon el-icon-circle-check"></i>
                 </div>
             </template>
                 <div v-if="tree.responses[200].schema.$ref">
@@ -99,7 +99,7 @@
             <template slot="title" >
                 <div class="panel-title">
                             响应状态码
-                        <i class="header-icon el-icon-info"></i>
+                        <i class="header-icon el-icon-warning"></i>
                 </div>
             </template>
             <!--接口参数列表-->
@@ -107,7 +107,7 @@
                     <tr>
                         <td>状态码</td>
                         <td >说明</td>
-                        <td>schema</td>
+                        <td>模式</td>
                     </tr>
                     
                     <tr v-for="(key,index) in tree.responses">
