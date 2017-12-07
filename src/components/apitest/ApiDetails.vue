@@ -105,14 +105,14 @@ export default {
   data() {
       return {
           activeNames:['1','2'],
-          openTree :true,
+          openTree :false,
           marksTree : true
       };
     },
     methods : {
         famtJSON(){
             let _this = this
-             $('#json-renderer').jsonViewer (eval(_this.$store.getters.getDefinitions.ResponseData),{collapsed :!_this.openTree,withQuotes :_this.marksTree});
+             $('#json-renderer').jsonViewer (eval(_this.originTree),{collapsed :!_this.openTree,withQuotes :!_this.marksTree});
         }
     },
     computed: {
@@ -120,7 +120,7 @@ export default {
             return this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end];
         },
         originTree(){
-             return this.$store.getters.getDefinitions.ResponseData
+             return this.$store.getters.getDefinitions.ResponseData.properties
         }
     }
 }
