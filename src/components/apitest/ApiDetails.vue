@@ -71,7 +71,7 @@
                 </table>
                  <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
         </el-collapse-item>
-         <el-collapse-item  name="2" class="collapse-class">
+         <el-collapse-item  name="3" class="collapse-class">
             <template slot="title" >
                 <div class="panel-title">
                             响应模型
@@ -94,6 +94,32 @@
                      </pre>
                      <div style="color:red;margin-left:10px" v-else>暂无响应模型</div>
         </el-collapse-item>
+
+        <el-collapse-item  name="4" class="collapse-class">
+            <template slot="title" >
+                <div class="panel-title">
+                            响应状态码
+                        <i class="header-icon el-icon-info"></i>
+                </div>
+            </template>
+            <!--接口参数列表-->
+                     <table class = "table-class parm-table-class">
+                    <tr>
+                        <td>状态码</td>
+                        <td >说明</td>
+                        <td>schema</td>
+                    </tr>
+                    
+                    <tr v-for="(key,index) in tree.responses">
+                        <td >{{index}}</td>
+                        <td >{{key.description}}</td>
+                        <td>{{key.schema}}</td>
+                        
+                    </tr>
+                    
+                </table>
+                 <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
+        </el-collapse-item>
         
         </el-collapse>
   </div>
@@ -104,7 +130,7 @@
 export default {
   data() {
       return {
-          activeNames:['1','2'],
+          activeNames:['1','2','3','4'],
           openTree :false,
           marksTree : true
       };
