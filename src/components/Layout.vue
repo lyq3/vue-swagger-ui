@@ -12,9 +12,9 @@
       </el-col>
        </el-row>
       <!--接口详情页面路由-->
-       <keep-alive>
+       <!-- <keep-alive> -->
         <router-view/>
-      </keep-alive>
+      <!-- </keep-alive> -->
     </el-main>
     </el-container>
   

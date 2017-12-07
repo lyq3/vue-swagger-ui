@@ -1,40 +1,96 @@
 <template>
   <div class = "outerClass" v-bind:style="{ height: this.$store.state.windowHeight -100+'px'}">
-      <el-button type="primary" class="btn-class btn-float">POST</el-button>
-      <el-input id="abc" v-model="input" placeholder="请输入内容" class="btn-class input-float" ></el-input>
+      <el-button type="primary" class="btn-class btn-float">{{tree.sendWay.toUpperCase()}}</el-button>
+      <el-input  v-model="tree.path" placeholder="请输入内容" class="btn-class input-float" ></el-input>
       <el-button type="success" class="btn-class">发送请求</el-button>
+      <el-collapse v-model="activeName" >
       <!--参数面板-->
-      <api-panel class = "panel-class"></api-panel>
-      <api-panel class = "panel-class"></api-panel>
-      <api-panel class = "panel-class"></api-panel>
-      <api-panel class = "panel-class"></api-panel>
-      <api-panel class = "panel-class"></api-panel>
-      <api-panel class = "panel-class"></api-panel>
-      <api-panel class = "panel-class"></api-panel>
-      <api-panel class = "panel-class"></api-panel>
-      22222222222222222
+      <el-collapse-item  name="1" class="collapse-class">
+            <template slot="title" >
+                <div class="panel-title">
+                            请求参数
+                        <i class="header-icon el-icon-upload"></i>
+                </div>
+            </template>
+            <!--接口参数列表-->
+                     <table class = "table-class parm-table-class">
+                    <tr>
+                        <td style="width:10px"><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"></el-checkbox></td>
+                        <td style="width:200px">参数名称</td>
+                        <td>参数值</td>
+                        <td style="width:30px">删除</td>
+                    </tr>
+                    
+                    <tr v-for="key in tree.parameters">
+                        <td > <el-checkbox></el-checkbox></td>
+                        <td ><el-input v-model="key.name"></el-input></td>
+                        <td><el-input ></el-input></td>
+                        <td><el-button size="small" type="danger">删除</el-button></td>
+                        
+                    </tr>
+                    
+                </table>
+                 <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
+        </el-collapse-item>
+        <el-collapse-item  name="2" class="collapse-class">
+            <template slot="title" >
+                <div class="panel-title">
+                            响应结果
+                        <i class="header-icon el-icon-upload"></i>
+                </div>
+            </template>
+            <!--接口参数列表-->
+                     <table class = "table-class parm-table-class">
+                    <tr>
+                        <td style="width:100px"><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox></td>
+                        <td >参数名称</td>
+                        <td>参数值</td>
+                        <td>删除</td>
+                    </tr>
+                    
+                    <tr v-for="key in tree.parameters">
+                        <td >{{key.name}}</td>
+                        <td >{{key.description}}</td>
+                        <td>{{key.type}}</td>
+                        <td>{{key.in}}</td>
+                        
+                    </tr>
+                    
+                </table>
+                 <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
+        </el-collapse-item>
+      </el-collapse>
   </div>
 </template>
 
 <script>
-import ApiPanel  from './ApiPanel'
 export default {
   name : 'ApiTest',
   data(){
       return {
+          url:tree.path,
+          activeName: ['1']
       }
   },
   components : {
-      ApiPanel
   },
   computed : {
+      tree (){
+            return this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end];
+        }
   }
 }
 </script>
 
 <style scoped>
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background-color:#fff;}
+::-webkit-scrollbar-thumb{background-color:#00aff0;}
+::-webkit-scrollbar-thumb:hover {background-color:#00aff0}
+::-webkit-scrollbar-thumb:active {background-color:#67C23A}
     .outerClass {
         overflow: auto;
+        overflow-x: hidden
     }
     .btn-class {
         -webkit-border-radius: 0;
@@ -52,5 +108,39 @@ export default {
     .panel-class {
         margin-top: 5px;
         /* float: left; */
+    }
+    .table-class {
+    width: 100%;
+    border: 0px;
+    border-top: 1px solid #E5E5E5;
+    border-left:0;
+    border-collapse: collapse;
+    }
+    .table-class td {
+    height: 40px;
+    line-height: 40px;
+    padding:5px 20px;
+    border-bottom: 1px solid #E5E5E5;
+    font-weight: bold;
+   
+    }
+    .panel-title {
+      /* background-color: #F0F9EB; */
+      /* color: #fff; */
+      padding-left: 10px;
+      height: 50px;
+      line-height: 50px;
+      /* border-bottom: 1px solid #E5E5E5;
+      border-left: 1px solid #E5E5E5;
+      border-right: 1px solid #E5E5E5; */
+     
+      font-weight: 30px;
+      font-size: 15px;
+      color: #4CAF50;
+    }
+    .collapse-class {
+        border: 1px solid #D8D8D8;
+        margin: 20px 0;
+        /* box-shadow: 3px 3px 8px #C4C4C4; */
     }
 </style>
