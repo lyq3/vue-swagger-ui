@@ -78,36 +78,21 @@
                         <i class="header-icon el-icon-info"></i>
                 </div>
             </template>
-                     <table class = "table-class">
-                    <tr>
-                        <td style="width:200px">
-                            URL
-                        </td>
-                        <td style="color:red">
-                            {{tree.path}}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >请求方式</td>
-                        <td > {{tree.sendWay.toUpperCase()}}</td>
-                    </tr>
-                    <tr>
-                        <td>接口名称</td>
-                        <td> {{tree.summary}}</td>
-                    </tr>
-                    <tr>
-                        <td>接口说明</td>
-                        <td> {{tree.description}}</td>
-                    </tr>
-                    <tr>
-                        <td>consumes</td>
-                        <td> {{tree.consumes}}</td>
-                    </tr>
-                    <tr>
-                        <td>produces</td>
-                        <td> {{tree.produces}}</td>
-                    </tr>
-                </table>
+                <div v-if="tree.responses[200].schema.$ref">
+                     <el-button style="margin:0 20px" size="small" @click="famtJSON" type="success" plain>格式化JSON</el-button>
+                    <el-switch
+                    v-model="openTree"
+                    active-text="展开所有节点">
+                    </el-switch>
+                    <el-switch
+                    <!-- v-model="marksTree"
+                    active-text="是为Key添加引号">
+                    </el-switch> -->
+                </div>
+                     <pre id= "json-renderer" v-if="tree.responses[200].schema.$ref">
+                         {{originTree}}
+                     </pre>
+                     <div style="color:red;margin-left:10px" v-else>暂无响应模型</div>
         </el-collapse-item>
         
         </el-collapse>
@@ -115,15 +100,27 @@
 </template>
 
 <script>
+
 export default {
   data() {
       return {
-          activeNames:['1','2']
+          activeNames:['1','2'],
+          openTree :true,
+          marksTree : true
       };
+    },
+    methods : {
+        famtJSON(){
+            let _this = this
+             $('#json-renderer').jsonViewer (eval(_this.$store.getters.getDefinitions.ResponseData),{collapsed :!_this.openTree,withQuotes :_this.marksTree});
+        }
     },
     computed: {
         tree (){
             return this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end];
+        },
+        originTree(){
+             return this.$store.getters.getDefinitions.ResponseData
         }
     }
 }

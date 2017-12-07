@@ -8,7 +8,9 @@ import ElementUI from 'element-ui'
 import store from './store/store'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/font-icon/iconfont.css'
+import 'jquery.json-viewer/json-viewer/jquery.json-viewer.css'
 import axios from 'axios'
+import jsonViewer from 'jquery.json-viewer/json-viewer/jquery.json-viewer.js'
 
 axios.defaults.baseURL = "taskManage";
 axios.defaults.headers.get['Content-Type']='application/json;charset=utf-8';

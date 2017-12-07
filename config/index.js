@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/taskManage': {
-        target:  'http://wx.lyq3.com',
+      '/webchat': {
+        target:  'http://qywx.4008990000.net',
         changeOrigin: true,
         pathRewrite: {
-          '/taskManage': '/taskManage'
+          '/webchat': '/webchat'
         }
       }
     },
