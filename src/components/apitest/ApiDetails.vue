@@ -144,7 +144,12 @@ export default {
             return this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end];
         },
         originTree(){
-             return this.$store.getters.getDefinitions.ResponseData.properties
+            // let ResponseData = {};
+            // let Definitions = this.$store.getters.getDefinitions;
+            // for(let key in Definitions){
+                
+            // }
+             return this.$store.getters.getDefinitions
         }
     }
 }
