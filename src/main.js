@@ -12,7 +12,7 @@ import 'jquery.json-viewer/json-viewer/jquery.json-viewer.css'
 import axios from 'axios'
 import jsonViewer from 'jquery.json-viewer/json-viewer/jquery.json-viewer.js'
 
-axios.defaults.baseURL = "taskManage";
+axios.defaults.baseURL = "/";
 axios.defaults.headers.get['Content-Type']='application/json;charset=utf-8';
 axios.defaults.headers.post['Content-Type']='application/x-www-form-urlencoded;charset=utf-8';
 Vue.prototype.$http = axios

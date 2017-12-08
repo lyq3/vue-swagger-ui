@@ -80,7 +80,7 @@ export default {
             }
           }
           $.ajax({
-              url : '/webchat'+url,
+              url : url,
               data : sendParm,
               type : v_this.tree.sendWay.toLowerCase(),
               dataType : 'json',
