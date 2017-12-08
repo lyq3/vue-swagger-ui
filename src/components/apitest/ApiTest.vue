@@ -44,9 +44,8 @@
                     v-model="openTree"
                     active-text="展开所有节点">
                     </el-switch>
-                    <pre id= "json-renderer_res" v-html="resData">
+                    <pre style="margin-left:20px" id= "json-renderer_res" v-html="resData[this.getRouterPam]">
                      </pre>
-                 <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
         </el-collapse-item>
       </el-collapse>
   </div>
@@ -59,7 +58,7 @@ export default {
           activeNames :['abc','2'],
           checkAll : true,
           openTree :true,
-          resData:''
+          resData:[]
       };
   },
   methods : {
@@ -71,7 +70,8 @@ export default {
           let url = this.tree.path;
           let tree = this.tree;
           let loading ;
-          let sendParm = {}
+          let sendParm = {};
+          let routerPam = this.getRouterPam;
           if(tree.parameters){
             for(let i= 0 ; i< v_this.tree.parameters.length ; i++){
                 if(tree.parameters[i].checked){
@@ -92,7 +92,9 @@ export default {
               },
               success : function(res){
                 loading.close();
-                v_this.resData = res;
+                v_this.resData[routerPam] = res;
+                 v_this.resData.push("触发变化");
+                v_this.resData.splice(v_this.resData.length-1,1);//删除刚才用于触发变化的元素
             
               }
           });
@@ -100,7 +102,9 @@ export default {
       famtJSON(){
           console.log(this.resData)
           let _this = this;
-           $('#json-renderer_res').jsonViewer (eval(_this.resData),{collapsed :!_this.openTree,withQuotes :!_this.marksTree});
+           $('#json-renderer_res').jsonViewer (eval(_this.resData[_this.getRouterPam]),{collapsed :!_this.openTree,withQuotes :!_this.marksTree});
+           this.resData[this.getRouterPam] = '<div>'+ $('#json-renderer_res').html() + '</div>';
+
       },
       handleCheckAllChange(){
           let _this = this;
@@ -128,6 +132,15 @@ export default {
   computed : {
       tree (){
             return this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end];
+        },
+        getData(){
+            alert(this.getRouterPam)
+            alert(this.resData)
+            return this.resData[this.getRouterPam]
+        },
+        getRouterPam(){
+            // return 'router' + this.$route.params.start + 'vs' + this.$route.params.end
+            return parseInt(this.$route.params.start + this.$route.params.end)
         }
   }
 }
