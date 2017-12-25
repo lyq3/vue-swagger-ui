@@ -26,7 +26,7 @@ export default new Vuex.Store({
       //   });
       $.ajax({
         async: false,
-        url:'/v2/api-docs',
+        url:'v2/api-docs',
         type : 'get',
         dataType : 'json',
         error : function(){
