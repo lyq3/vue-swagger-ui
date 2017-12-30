@@ -4,9 +4,10 @@
 
 #### 效果图
 
+![vue-swagger-ui](http://opl3lmj0o.bkt.clouddn.com/2017-12-30_212108.png)
+
 ![vue-swagger-ui](http://opl3lmj0o.bkt.clouddn.com/2017-12-30_212054.png)
 
-![vue-swagger-ui](http://opl3lmj0o.bkt.clouddn.com/2017-12-30_212108.png)
 
 ## Build Setup
 
