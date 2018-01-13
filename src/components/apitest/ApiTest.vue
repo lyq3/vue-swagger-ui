@@ -3,9 +3,9 @@
       <el-button type="primary" class="btn-class btn-float">{{tree.sendWay.toUpperCase()}}</el-button>
       <el-input  v-model="tree.path" placeholder="请输入内容" class="btn-class input-float" ></el-input>
       <el-button type="success" class="btn-class" @click="getSendParam">发送请求</el-button>
-      <el-collapse v-model="activeName" >
+      <el-collapse v-model="activeNames" >
       <!--参数面板-->
-      <el-collapse-item  name="1" class="collapse-class">
+      <el-collapse-item  name="2" class="collapse-class">
             <template slot="title" >
                 <div class="panel-title">
                             请求参数
@@ -32,11 +32,11 @@
                 </table>
                  <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
         </el-collapse-item>
-        <el-collapse-item  name="2" class="collapse-class">
+        <el-collapse-item  name="abc" class="collapse-class">
             <template slot="title" >
                 <div class="panel-title">
                             响应结果
-                        <i class="header-icon el-icon-upload"></i>
+                        <i class="header-icon el-icon-warning"></i>
                 </div>
             </template>
              <el-button style="margin:0 20px" size="small" @click="famtJSON" type="success" plain>格式化JSON</el-button>
@@ -44,28 +44,8 @@
                     v-model="openTree"
                     active-text="展开所有节点">
                     </el-switch>
-                    <pre id= "json-renderer_res" >
-                         {{res}}
+                    <pre style="margin-left:20px" id= "json-renderer_res" v-html="resData[this.getRouterPam]">
                      </pre>
-            <!--接口参数列表-->
-                     <!-- <table class = "table-class parm-table-class">
-                    <tr>
-                        <td style="width:100px"><el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox></td>
-                        <td >参数名称</td>
-                        <td>参数值</td>
-                        <td>删除</td>
-                    </tr>
-                    
-                    <tr v-for="key in tree.parameters">
-                        <td >{{key.name}}</td>
-                        <td >{{key.description}}</td>
-                        <td>{{key.type}}</td>
-                        <td>{{key.in}}</td>
-                        
-                    </tr>
-                    
-                </table> -->
-                 <div style="color:red; text-align: center" v-if="!tree.parameters">无参数</div>
         </el-collapse-item>
       </el-collapse>
   </div>
@@ -73,57 +53,58 @@
 
 <script>
 export default {
-  name : 'ApiTest',
-  data(){
+  data() {
       return {
-          url:tree.path,
-          activeName: ['1'],
+          activeNames :['abc','2'],
           checkAll : true,
-          openTree :false,
-          marksTree : true,
-          res:'暂无数据'
-      }
+          openTree :true,
+          resData:[]
+      };
   },
   methods : {
       delParam(index){
           this.tree.parameters.splice(index,1);
       },
       getSendParam(){
-          console.log(this.tree.parameters);
-          let _this = this;
+          let v_this = this;
           let url = this.tree.path;
           let tree = this.tree;
           let loading ;
-          let sendParm = {}
-          if(_this.tree.parameters){
-            for(let i= 0 ; i< _this.tree.parameters.length ; i++){
+          let sendParm = {};
+          let routerPam = this.getRouterPam;
+          if(tree.parameters){
+            for(let i= 0 ; i< v_this.tree.parameters.length ; i++){
                 if(tree.parameters[i].checked){
                     sendParm[tree.parameters[i].name] = tree.parameters[i].value;
-                    console.log(sendParm)
                 }
             }
           }
           $.ajax({
-              url : '/webchat'+url,
+              url : url,
               data : sendParm,
-              type : _this.tree.sendWay.toLowerCase(),
+              type : v_this.tree.sendWay.toLowerCase(),
               dataType : 'json',
               beforeSend:function(){
-                loading =  _this.openFullScreen();
+                loading =  v_this.openFullScreen();
               },
               error:function(){
                 loading.close();
               },
               success : function(res){
                 loading.close();
-                _this.res = res;
+                v_this.resData[routerPam] = res;
+                 v_this.resData.push("触发变化");
+                v_this.resData.splice(v_this.resData.length-1,1);//删除刚才用于触发变化的元素
             
               }
           });
       },
       famtJSON(){
+          console.log(this.resData)
           let _this = this;
-           $('#json-renderer_res').jsonViewer (eval(_this.res),{collapsed :!_this.openTree,withQuotes :!_this.marksTree});
+           $('#json-renderer_res').jsonViewer (eval(_this.resData[_this.getRouterPam]),{collapsed :!_this.openTree,withQuotes :!_this.marksTree});
+           this.resData[this.getRouterPam] = '<div>'+ $('#json-renderer_res').html() + '</div>';
+
       },
       handleCheckAllChange(){
           let _this = this;
@@ -151,6 +132,15 @@ export default {
   computed : {
       tree (){
             return this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end];
+        },
+        getData(){
+            alert(this.getRouterPam)
+            alert(this.resData)
+            return this.resData[this.getRouterPam]
+        },
+        getRouterPam(){
+            // return 'router' + this.$route.params.start + 'vs' + this.$route.params.end
+            return parseInt(this.$route.params.start + this.$route.params.end)
         }
   }
 }

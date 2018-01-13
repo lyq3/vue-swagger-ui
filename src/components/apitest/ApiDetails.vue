@@ -85,9 +85,7 @@
                     active-text="展开所有节点">
                     </el-switch>
                     <el-switch
-                    <!-- v-model="marksTree"
-                    active-text="是为Key添加引号">
-                    </el-switch> -->
+                 
                 </div>
                      <pre id= "json-renderer" v-if="tree.responses[200].schema.$ref">
                          {{originTree}}
@@ -102,7 +100,7 @@
                         <i class="header-icon el-icon-warning"></i>
                 </div>
             </template>
-            <!--接口参数列表-->
+            <!--响应列表-->
                      <table class = "table-class parm-table-class">
                     <tr>
                         <td>状态码</td>
@@ -146,7 +144,12 @@ export default {
             return this.$store.getters.getMenuTreeObj[this.$route.params.start].paths[this.$route.params.end];
         },
         originTree(){
-             return this.$store.getters.getDefinitions.ResponseData.properties
+            // let ResponseData = {};
+            // let Definitions = this.$store.getters.getDefinitions;
+            // for(let key in Definitions){
+                
+            // }
+             return this.$store.getters.getDefinitions
         }
     }
 }
