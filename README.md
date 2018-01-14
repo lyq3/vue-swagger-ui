@@ -22,12 +22,12 @@
 
 ```xml
 <dependency>
-            <groupId>com.github.yq3</groupId>
-            <artifactId>vue-swager-ui</artifactId>
-            <version>2.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/../ds-config/src/main/resources/lib/vue-swager-ui-1.0-SNAPSHOT.jar</systemPath>
-        </dependency>
+    <groupId>com.github.yq3</groupId>
+    <artifactId>vue-swager-ui</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/../ds-config/src/main/resources/lib/vue-swager-ui-1.0-SNAPSHOT.jar</systemPath>
+</dependency>
 ```
 上面路径为本地jar包所在目录 
 
