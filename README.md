@@ -68,7 +68,7 @@ swagger封装给出的请求地址默认是/v2/api-docs,所以vue-swagger-ui调�
 
 </servlet-mapping>
 
-<!-- 配置swagger-bootstrap-ui的url请求路径-->
+<!-- 配置vue-swagger-ui的url请求路径-->
 
 <servlet-mapping>
 
