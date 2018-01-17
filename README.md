@@ -37,7 +37,7 @@
 
 #### 注意事项
 
-swagger封装给出的请求地址默认是/v2/api-docs,所以vue-swagger-ui调用后台也是/v2/api-docs,不能带后缀,且需返回json格式数据,* 框架如果是spring boot的可以不用修改,直接使用 *,如果是Spring MVC在web.xml中配置了DispatcherServlet,则需要追加一个url匹配规则,如下：
+swagger封装给出的请求地址默认是/v2/api-docs,所以vue-swagger-ui调用后台也是/v2/api-docs,不能带后缀,且需返回json格式数据,** 框架如果是spring boot的可以不用修改,直接使用 **,如果是Spring MVC在web.xml中配置了DispatcherServlet,则需要追加一个url匹配规则,如下：
 ```xml
 <servlet>
 
